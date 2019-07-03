@@ -1,0 +1,10 @@
+version: '3.7'
+services:
+  run_compile:
+    build: docker/
+    image: dictionary_build_env
+    volumes:
+      - type: bind
+        source: ..
+        target: /workspace
+    command: "bash -c 'cd /workspace/DictionaryPC && ./compile.sh'"

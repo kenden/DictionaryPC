@@ -1,3 +1,6 @@
+#!/usr/bin/env bash
+set -e
+
 ICU4J=/usr/share/java/icu4j-49.1.jar
 test -r "$ICU4J" || ICU4J=/usr/share/icu4j-55/lib/icu4j.jar
 JUNIT=/usr/share/java/junit.jar
@@ -31,4 +34,4 @@ if [ ! -r "$COMMONS_COMPRESS" ] ; then
     echo "commons-compress needs to be installed"
     exit 1;
 fi
-javac -g ../Dictionary/Util/src/com/hughes/util/*.java ../Dictionary/Util/src/com/hughes/util/raf/*.java ../Dictionary/src/com/hughes/android/dictionary/DictionaryInfo.java ../Dictionary/src/com/hughes/android/dictionary/engine/*.java ../Dictionary/src/com/hughes/android/dictionary/C.java src/com/hughes/util/*.java src/com/hughes/android/dictionary/*.java src/com/hughes/android/dictionary/*/*.java src/com/hughes/android/dictionary/*/*/*.java -classpath "$ICU4J:$JUNIT:$XERCES:$COMMONS:$COMMONS_COMPRESS"
+javac -encoding UTF-8 -Xlint:deprecation -g ../Dictionary/Util/src/com/hughes/util/*.java ../Dictionary/Util/src/com/hughes/util/raf/*.java ../Dictionary/src/com/hughes/android/dictionary/DictionaryInfo.java ../Dictionary/src/com/hughes/android/dictionary/engine/*.java ../Dictionary/src/com/hughes/android/dictionary/C.java src/com/hughes/util/*.java src/com/hughes/android/dictionary/*.java src/com/hughes/android/dictionary/*/*.java src/com/hughes/android/dictionary/*/*/*.java -classpath "$ICU4J:$JUNIT:$XERCES:$COMMONS:$COMMONS_COMPRESS"
