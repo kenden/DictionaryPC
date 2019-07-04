@@ -1,6 +1,25 @@
 version: '3.7'
 services:
-  run_compile:
+
+  download_inputs:
+    build: docker/
+    image: dictionary_build_env
+    volumes:
+      - type: bind
+        source: ..
+        target: /workspace
+    command: '/workspace/DictionaryPC/data/downloadInputs.sh'
+
+  wiktionary_splitter:
+    build: docker/
+    image: dictionary_build_env
+    volumes:
+      - type: bind
+        source: ..
+        target: /workspace
+    command: "bash -c 'cd /workspace/DictionaryPC && ./WiktionarySplitter.sh'"
+
+  compile:
     build: docker/
     image: dictionary_build_env
     volumes:
@@ -8,3 +27,12 @@ services:
         source: ..
         target: /workspace
     command: "bash -c 'cd /workspace/DictionaryPC && ./compile.sh'"
+
+  generate_dictionaries:
+    build: docker/
+    image: dictionary_build_env
+    volumes:
+      - type: bind
+        source: ..
+        target: /workspace
+    command: "bash -c 'cd /workspace/DictionaryPC && ./generate_dictionaries.sh'"

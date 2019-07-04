@@ -7,4 +7,5 @@ RUN apt-get update \
          junit \
          libxerces2-java \
          libcommons-lang3-java \
-         libcommons-compress-java
+         libcommons-compress-java \
+         p7zip-full
